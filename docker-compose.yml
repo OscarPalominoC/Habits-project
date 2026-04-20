@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  database:
+    image: mongo:latest
+    container_name: habits_rpg_db
+    ports:
+      - "27017:27017"
+    volumes:
+      - habits_rpg_data:/data/db
+    networks:
+      - rpg_network
+
+  backend:
+    build: ./backend
+    container_name: habits_rpg_backend
+    ports:
+      - "8002:8002"
+    environment:
+      - MONGODB_URI=mongodb://database:27017
+      - DATABASE_NAME=habits_rpg
+      - JWT_SECRET=habits-rpg-secret-key-2026
+      - JWT_ALGORITHM=HS256
+      - ACCESS_TOKEN_EXPIRE_MINUTES=10080
+    depends_on:
+      - database
+    networks:
+      - rpg_network
+
+  frontend:
+    build: ./frontend
+    container_name: habits_rpg_frontend
+    ports:
+      - "5175:5175"
+    environment:
+      - VITE_API_URL=http://localhost:8002
+    depends_on:
+      - backend
+    networks:
+      - rpg_network
+
+networks:
+  rpg_network:
+    driver: bridge
+
+volumes:
+  habits_rpg_data:
