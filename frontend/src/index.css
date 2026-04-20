@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-dark-900 text-white font-sans;
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  /* ── RPG Card ── */
+  .card {
+    @apply bg-dark-800 border border-dark-600 rounded-2xl p-6 shadow-lg;
+  }
+  .card-hover {
+    @apply card transition-all duration-300 hover:border-violet-600/50 hover:shadow-violet;
+  }
+
+  /* ── Buttons ── */
+  .btn-primary {
+    @apply bg-gradient-to-r from-violet-600 to-indigo-600 text-white font-semibold 
+           px-6 py-2.5 rounded-xl transition-all duration-200
+           hover:from-violet-500 hover:to-indigo-500 hover:shadow-violet
+           active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-secondary {
+    @apply bg-dark-600 border border-dark-500 text-gray-300 font-medium
+           px-6 py-2.5 rounded-xl transition-all duration-200
+           hover:bg-dark-500 hover:text-white active:scale-95;
+  }
+  .btn-gold {
+    @apply bg-gradient-to-r from-gold-600 to-gold-400 text-dark-900 font-bold
+           px-6 py-2.5 rounded-xl transition-all duration-200 shadow-gold
+           hover:shadow-gold hover:scale-105 active:scale-95;
+  }
+  .btn-danger {
+    @apply bg-red-600/20 border border-red-600/40 text-red-400 font-medium
+           px-4 py-2 rounded-xl transition-all duration-200
+           hover:bg-red-600/30 hover:text-red-300 active:scale-95;
+  }
+
+  /* ── Inputs ── */
+  .input {
+    @apply bg-dark-700 border border-dark-500 text-white placeholder-gray-500
+           rounded-xl px-4 py-2.5 w-full transition-all duration-200
+           focus:outline-none focus:border-violet-500 focus:ring-1 focus:ring-violet-500/30;
+  }
+  .select {
+    @apply input cursor-pointer;
+  }
+
+  /* ── XP Bar ── */
+  .xp-bar-track {
+    @apply w-full h-3 bg-dark-600 rounded-full overflow-hidden;
+  }
+  .xp-bar-fill {
+    @apply h-full rounded-full bg-xp-bar transition-all duration-700 ease-out;
+  }
+
+  /* ── Level Badge ── */
+  .level-badge {
+    @apply inline-flex items-center justify-center w-14 h-14 rounded-2xl
+           bg-gradient-to-br from-violet-600 to-indigo-700 shadow-violet
+           font-display font-bold text-xl text-white;
+  }
+
+  /* ── Status chips ── */
+  .status-complete {
+    @apply inline-flex items-center gap-1 px-2 py-0.5 rounded-lg text-xs font-medium
+           bg-emerald-500/20 text-emerald-400 border border-emerald-500/30;
+  }
+  .status-partial {
+    @apply inline-flex items-center gap-1 px-2 py-0.5 rounded-lg text-xs font-medium
+           bg-gold-500/20 text-gold-400 border border-gold-500/30;
+  }
+  .status-incomplete {
+    @apply inline-flex items-center gap-1 px-2 py-0.5 rounded-lg text-xs font-medium
+           bg-red-500/20 text-red-400 border border-red-500/30;
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { @apply bg-dark-900; }
+  ::-webkit-scrollbar-thumb { @apply bg-dark-500 rounded-full; }
+  ::-webkit-scrollbar-thumb:hover { @apply bg-dark-400; }
+}
+
+/* Shimmer loading skeleton */
+.skeleton {
+  background: linear-gradient(90deg, #151f38 25%, #1c2a47 50%, #151f38 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
