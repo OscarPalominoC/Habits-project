@@ -10,10 +10,5 @@ export default defineConfig({
     port: 5175,
     strictPort: true,
     allowedHosts: ['oscarpalomino.dev', 'www.oscarpalomino.dev'],
-    hmr: {
-      host: 'oscarpalomino.dev',
-      clientPort: 443,
-      protocol: 'wss'
-    }
   }
 })
