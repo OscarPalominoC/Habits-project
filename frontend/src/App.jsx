@@ -15,7 +15,7 @@ function MainLayout({ children }) {
   return (
     <div className="min-h-screen bg-dark-900 text-gray-200">
       <Navbar />
-      <main className="pl-64 p-8">
+      <main className="lg:pl-64 pt-20 lg:pt-8 px-4 lg:px-8 pb-8">
         {children}
       </main>
       <XPNotification />
