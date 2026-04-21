@@ -3,6 +3,7 @@ from pydantic import BaseModel
 from typing import Optional
 from models.user import User, get_title
 from core.deps import get_current_user
+from core.security import hash_password
 
 router = APIRouter(prefix="/users", tags=["users"])
 
@@ -23,6 +24,8 @@ class UserProfile(BaseModel):
 class UpdateUserRequest(BaseModel):
     username: Optional[str] = None
     avatar: Optional[str] = None
+    email: Optional[str] = None
+    password: Optional[str] = None
 
 
 def user_to_profile(user: User) -> UserProfile:
@@ -53,5 +56,10 @@ async def update_me(
         current_user.username = body.username
     if body.avatar is not None:
         current_user.avatar = body.avatar
+    if body.email is not None:
+        current_user.email = body.email
+    if body.password is not None and body.password.strip():
+        current_user.hashed_password = hash_password(body.password)
+    
     await current_user.save()
     return user_to_profile(current_user)
