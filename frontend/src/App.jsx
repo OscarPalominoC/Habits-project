@@ -9,6 +9,7 @@ import HabitDetailPage from "./pages/HabitDetailPage";
 import ProfilePage from "./pages/ProfilePage";
 import XPNotification from "./components/XPNotification";
 import LandingPage from "./pages/LandingPage";
+import AboutPage from "./pages/AboutPage";
 
 // A layout component for routes that need the sidebar
 function MainLayout({ children }) {
@@ -29,6 +30,7 @@ function App() {
       <Route path="/" element={<LandingPage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
+      <Route path="/about" element={<AboutPage />} />
       
       <Route path="/dashboard" element={
         <ProtectedRoute>

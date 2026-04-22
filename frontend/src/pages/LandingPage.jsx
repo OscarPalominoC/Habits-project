@@ -37,7 +37,9 @@ export default function LandingPage() {
           </div>
           <span className="text-xl font-display font-bold text-white tracking-wide">Habit<span className="text-gold-400">Quest</span></span>
         </div>
-        <div className="flex gap-4">
+        <div className="flex items-center gap-6">
+          <Link to="/about" className="hidden md:block text-sm font-medium text-gray-400 hover:text-gold-400 transition-colors">Guía</Link>
+          <div className="flex gap-4">
           {token ? (
             <Link to="/dashboard" className="btn-gold">Entrar al Gremio</Link>
           ) : (
@@ -46,6 +48,7 @@ export default function LandingPage() {
               <Link to="/register" className="btn-gold hidden sm:block">Crear Personaje</Link>
             </>
           )}
+          </div>
         </div>
       </nav>
 

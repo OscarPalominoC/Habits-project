@@ -5,6 +5,7 @@ import useAuthStore from "../store/authStore";
 const navItems = [
   { to: "/dashboard", icon: "⚡", label: "Dashboard" },
   { to: "/habits", icon: "📋", label: "Misiones" },
+  { to: "/about", icon: "📜", label: "Guía" },
   { to: "/profile", icon: "👤", label: "Perfil" },
 ];
 
